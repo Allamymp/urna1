@@ -26,13 +26,15 @@ public class Candidate {
     @Column(name="number", nullable = false)
     private Integer number;
 
+    private Integer votes = 0;
+
     @ManyToOne
-    @JoinColumn(name = "partido_id")
+    @JoinColumn(name = "party_id")
     private PoliticalParty party;
 
-    private Integer vote = 0;
+
 
     public void addVote() {
-        this.vote++;
+        this.votes++;
     }
 }

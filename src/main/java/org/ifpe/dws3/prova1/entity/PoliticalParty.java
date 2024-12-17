@@ -1,5 +1,6 @@
 package org.ifpe.dws3.prova1.entity;
 
+import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,6 +34,7 @@ public class PoliticalParty {
     private Integer number;
 
     @OneToMany(mappedBy = "party")
+    @JsonbTransient
     private List<Candidate> candidates = new ArrayList<>();
 
     @Column(name = "votes")
