@@ -31,29 +31,6 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- Lombok -->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.18.36</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<!-- H2 -->
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>2.3.232</version>
-			<scope>runtime</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>io.smallrye</groupId>
-			<artifactId>smallrye-open-api-jaxrs</artifactId>
-			<version>3.13.0</version>
-			<scope>provided</scope>
-		</dependency>
-
 	</dependencies>
 
 	<build>
