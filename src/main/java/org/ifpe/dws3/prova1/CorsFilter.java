@@ -1,4 +1,4 @@
-package org.ifpe.dws3.prova1.filters;
+package org.ifpe.dws3.prova1;
 
 import jakarta.ws.rs.container.ContainerRequestContext;
 import jakarta.ws.rs.container.ContainerResponseContext;
