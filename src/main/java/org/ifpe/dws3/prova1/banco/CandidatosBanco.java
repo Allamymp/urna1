@@ -1,7 +1,7 @@
 package org.ifpe.dws3.prova1.banco;
 
 
-import org.ifpe.dws3.prova1.entity.Candidatos;
+import org.ifpe.dws3.prova1.Candidatos;
 
 import java.util.*;
 

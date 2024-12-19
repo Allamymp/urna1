@@ -1,6 +1,8 @@
-package org.ifpe.dws3.prova1.entity;
+package org.ifpe.dws3.prova1;
 
+import jakarta.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 public class Candidatos {
 
     private Integer id;

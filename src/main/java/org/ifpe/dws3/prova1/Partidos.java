@@ -1,11 +1,13 @@
-package org.ifpe.dws3.prova1.entity;
+package org.ifpe.dws3.prova1;
 
+
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-
+@XmlRootElement
 public class Partidos {
 
     private Integer id;

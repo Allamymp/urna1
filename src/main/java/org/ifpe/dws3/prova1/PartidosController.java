@@ -1,19 +1,18 @@
-package org.ifpe.dws3.prova1.controller;
+package org.ifpe.dws3.prova1;
 
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 import org.ifpe.dws3.prova1.banco.CandidatosBanco;
 import org.ifpe.dws3.prova1.banco.PartidosBanco;
-import org.ifpe.dws3.prova1.entity.Candidatos;
-import org.ifpe.dws3.prova1.entity.Partidos;
 
 import java.util.List;
 
 @Path("/partidos")
-@Produces(MediaType.APPLICATION_JSON)
+@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 @Consumes(MediaType.APPLICATION_JSON)
 @RequestScoped
 public class PartidosController {
@@ -31,8 +30,19 @@ public class PartidosController {
 
     @GET
     @Path("/{id}")
-    public Partidos getById(@PathParam("id") Integer id) {
-        return banco.findById(id);
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_XML)
+    public Response getById(String xmlInput) {
+
+        Integer id = extractIdFromXml(xmlInput);
+        Partidos partido = banco.findById(id);
+
+        if (partido == null) {
+            return Response.status(Response.Status.NOT_FOUND)
+                    .entity("{\"error\": \"Partido não encontrado com ID: " + id + "\"}")
+                    .build();
+        }
+        return Response.ok(partido).build();
     }
 
     @POST
@@ -72,13 +82,14 @@ public class PartidosController {
         return banco.save(partido);
     }
 
-    @POST
-    @Path("/{partidoId}/voto")
-    public Partidos addVoto(@PathParam("partidoId") Integer partidoId) {
-
-        Partidos partido = banco.findById(partidoId);
-
-        partido.addVoto();
-        return banco.save(partido);
+    private Integer extractIdFromXml(String xml) {
+        try {
+            int start = xml.indexOf("<id>") + 4;
+            int end = xml.indexOf("</id>");
+            String idString = xml.substring(start, end);
+            return Integer.parseInt(idString);
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

@@ -1,8 +1,8 @@
 package org.ifpe.dws3.prova1.banco;
 
 import jakarta.ejb.Stateless;
-import org.ifpe.dws3.prova1.entity.Candidatos;
-import org.ifpe.dws3.prova1.entity.Partidos;
+import org.ifpe.dws3.prova1.Candidatos;
+import org.ifpe.dws3.prova1.Partidos;
 
 import java.util.*;
 
